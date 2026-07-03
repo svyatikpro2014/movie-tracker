@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, delete
 from database import get_session
 from models import MoviesModel
-from schemas import FilmAddSchema, FilmResponse
+from schemas import FilmAddSchema, FilmResponse, FilmUpdate
 from routers.auth import get_current_user
 
 
@@ -59,5 +59,5 @@ async def update_movie(movie_id:int, movie_update: FilmUpdate, session: AsyncSes
     
     movie_update.status = "Watched" 
     await session.commit()  
-    await session.refresh(movie)
+    await session.refresh(movie_update)
     return movie_update
