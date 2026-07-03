@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reel — трекер фильмов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<!-- ===================== AUTH SCREEN ===================== -->
+<section id="auth-screen" class="screen">
+  <div class="auth-wrap">
+    <div class="brand">
+      <span class="brand-mark">◐</span>
+      <h1>Reel</h1>
+    </div>
+    <p class="brand-sub">Веди счёт тому, что смотришь.</p>
+
+    <div class="auth-card">
+      <div class="tabs">
+        <button class="tab active" id="tab-login" onclick="switchTab('login')">Вход</button>
+        <button class="tab" id="tab-register" onclick="switchTab('register')">Регистрация</button>
+      </div>
+
+      <form id="auth-form" onsubmit="return false;">
+        <label class="field">
+          <span>Email</span>
+          <input type="email" id="email" placeholder="you@example.com" required>
+        </label>
+        <label class="field">
+          <span>Пароль</span>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </label>
+
+        <p id="auth-error" class="error-msg" hidden></p>
+
+        <button type="submit" id="auth-submit" class="btn-primary" onclick="login()">
+          Войти
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== APP SCREEN ===================== -->
+<section id="app-screen" class="screen" hidden>
+  <header class="topbar">
+    <div class="brand small">
+      <span class="brand-mark">◐</span>
+      <span>Reel</span>
+    </div>
+    <button class="btn-ghost" onclick="logout()">Выйти</button>
+  </header>
+
+  <main class="main">
+    <div class="main-inner">
+
+      <!-- Add movie -->
+      <section class="panel add-panel">
+        <h2 class="panel-title">Добавить фильм</h2>
+        <form id="add-form" onsubmit="return false;">
+          <div class="add-row">
+            <input type="text" id="film_name" placeholder="Название фильма" required>
+            <select id="status">
+              <option value="Want_to_watch">Хочу посмотреть</option>
+              <option value="Watched">Посмотрел</option>
+            </select>
+            <button type="submit" class="btn-primary" onclick="addMovie()">Добавить</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Filters -->
+      <section class="filters">
+        <div class="filter-group" id="status-filters">
+          <button class="chip active" data-status="">Все</button>
+          <button class="chip" data-status="Want_to_watch">Хочу посмотреть</button>
+          <button class="chip" data-status="Watched">Посмотрел</button>
+        </div>
+      </section>
+
+      <!-- Movies list -->
+      <section id="movies-list" class="tickets"></section>
+
+      <p id="empty-state" class="empty-state" hidden>
+        Список пуст. Пока ничего не добавлено — самое время это исправить.
+      </p>
+    </div>
+  </main>
+</section>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
