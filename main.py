@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from database import setup_database, get_session
+from database import setup_database
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from routers.movies import router as movies_router
