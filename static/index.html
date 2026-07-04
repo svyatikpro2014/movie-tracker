@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reel — трекер фильмов</title>
+<title>Reel — movie tracker</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,12 +20,12 @@
       <span class="brand-mark">◐</span>
       <h1>Reel</h1>
     </div>
-    <p class="brand-sub">Веди счёт тому, что смотришь.</p>
+    <p class="brand-sub">Keep track of what you watch.</p>
 
     <div class="auth-card">
       <div class="tabs">
-        <button class="tab active" id="tab-login" onclick="switchTab('login')">Вход</button>
-        <button class="tab" id="tab-register" onclick="switchTab('register')">Регистрация</button>
+        <button class="tab active" id="tab-login" onclick="switchTab('login')">Login</button>
+        <button class="tab" id="tab-register" onclick="switchTab('register')">Register</button>
       </div>
 
       <form id="auth-form" onsubmit="return false;">
@@ -34,14 +34,14 @@
           <input type="email" id="email" placeholder="you@example.com" required>
         </label>
         <label class="field">
-          <span>Пароль</span>
+          <span>Password</span>
           <input type="password" id="password" placeholder="••••••••" required>
         </label>
 
         <p id="auth-error" class="error-msg" hidden></p>
 
         <button type="submit" id="auth-submit" class="btn-primary" onclick="login()">
-          Войти
+          Login
         </button>
       </form>
     </div>
@@ -55,7 +55,7 @@
       <span class="brand-mark">◐</span>
       <span>Reel</span>
     </div>
-    <button class="btn-ghost" onclick="logout()">Выйти</button>
+    <button class="btn-ghost" onclick="logout()">Logout</button>
   </header>
 
   <main class="main">
@@ -63,15 +63,15 @@
 
       <!-- Add movie -->
       <section class="panel add-panel">
-        <h2 class="panel-title">Добавить фильм</h2>
+        <h2 class="panel-title">Add Movie</h2>
         <form id="add-form" onsubmit="return false;">
           <div class="add-row">
-            <input type="text" id="film_name" placeholder="Название фильма" required>
+            <input type="text" id="film_name" placeholder="Movie name" required>
             <select id="status">
-              <option value="Want_to_watch">Хочу посмотреть</option>
-              <option value="Watched">Посмотрел</option>
+              <option value="Want_to_watch">Want to watch</option>
+              <option value="Watched">Watched</option>
             </select>
-            <button type="submit" class="btn-primary" onclick="addMovie()">Добавить</button>
+            <button type="submit" class="btn-primary" onclick="addMovie()">Add</button>
           </div>
         </form>
       </section>
@@ -79,9 +79,9 @@
       <!-- Filters -->
       <section class="filters">
         <div class="filter-group" id="status-filters">
-          <button class="chip active" data-status="">Все</button>
-          <button class="chip" data-status="Want_to_watch">Хочу посмотреть</button>
-          <button class="chip" data-status="Watched">Посмотрел</button>
+          <button class="chip active" data-status="">All</button>
+          <button class="chip" data-status="Want_to_watch">Want to watch</button>
+          <button class="chip" data-status="Watched">Watched</button>
         </div>
       </section>
 
@@ -89,7 +89,7 @@
       <section id="movies-list" class="tickets"></section>
 
       <p id="empty-state" class="empty-state" hidden>
-        Список пуст. Пока ничего не добавлено — самое время это исправить.
+        No movies yet — time to add your first one.
       </p>
     </div>
   </main>

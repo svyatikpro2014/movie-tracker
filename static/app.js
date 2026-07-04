@@ -27,7 +27,7 @@ function switchTab(mode) {
   currentMode = mode;
   document.getElementById("tab-login").classList.toggle("active", mode === "login");
   document.getElementById("tab-register").classList.toggle("active", mode === "register");
-  document.getElementById("auth-submit").textContent = mode === "login" ? "Войти" : "Создать аккаунт";
+  document.getElementById("auth-submit").textContent = mode === "login" ? "Login" : "Create account";
   document.getElementById("auth-submit").onclick = mode === "login" ? login : register;
   hideAuthError();
 }
@@ -67,13 +67,13 @@ async function register() {
 
     if (response.ok) {
       switchTab("login");
-      showAuthError("Аккаунт создан. Теперь войдите.");
+      showAuthError("Account created. Now log in.");
     } else {
       const error = await response.json();
-      showAuthError(error.detail || "Не удалось зарегистрироваться");
+      showAuthError(error.detail || "Unable to register");
     }
   } catch (err) {
-    showAuthError("Сервер недоступен");
+    showAuthError("Server unavailable");
   }
 }
 
@@ -96,10 +96,10 @@ async function login() {
       showApp();
       loadMovies();
     } else {
-      showAuthError("Неверный email или пароль");
+      showAuthError("Incorrect email or password");
     }
   } catch (err) {
-    showAuthError("Сервер недоступен");
+    showAuthError("Server not available");
   }
 }
 
@@ -146,8 +146,8 @@ function renderMovies() {
   empty.hidden = true;
 
   const statusLabels = {
-    Want_to_watch: "Хочу посмотреть",
-    Watched: "Посмотрел"
+    Want_to_watch: "Want to watch",
+    Watched: "Watched"
   };
 
   movies.forEach(movie => {
@@ -164,10 +164,10 @@ function renderMovies() {
         </div>
         <div class="ticket-actions">
           <select class="status-select" onchange="updateStatus(${movie.id}, this.value)">
-            <option value="Want_to_watch" ${movie.status === "Want_to_watch" ? "selected" : ""}>Хочу посмотреть</option>
-            <option value="Watched" ${movie.status === "Watched" ? "selected" : ""}>Посмотрел</option>
+            <option value="Want_to_watch" ${movie.status === "Want_to_watch" ? "selected" : ""}>Want to watch</option>
+            <option value="Watched" ${movie.status === "Watched" ? "selected" : ""}>Watched</option>
           </select>
-          <button class="icon-btn danger" title="Удалить" onclick="deleteMovie(${movie.id})">✕</button>
+          <button class="icon-btn danger" title="Delete" onclick="deleteMovie(${movie.id})">✕</button>
         </div>
       </div>
     `;
@@ -196,10 +196,10 @@ async function addMovie() {
       loadMovies();
     } else {
       const error = await response.json();
-      alert(error.detail || "Не удалось добавить фильм");
+      alert(error.detail || "Unable to add a film");
     }
   } catch (err) {
-    alert("Сервер недоступен");
+    alert("Server unavailable");
   }
 }
 
